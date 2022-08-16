@@ -17,7 +17,7 @@ p {
 
 <script>
 function start(){
-  const programa_tiempos  = [5,1,1,2,1,2,1,3,2,3,2,2,1,1,5];
+  const programa_tiempos  = [5,1,1,2,1,2,1,2,2,2,2,2,1,1,5];
   const programa_tareas  = ["walk", "run", "walk", "run","walk", "run", "walk", "run","walk", "run", "walk", "run", "walk", "run", "walk" ];
 runProgram(programa_tiempos,programa_tareas);
 }
@@ -34,7 +34,7 @@ function runProgram(programa_tiempos, programa_tareas){
     var distance_current = remaining_task--;
     console.log(distance_total + " - " + distance_current);
 
-document.getElementById("current_task").innerHTML =  Math.floor(distance_current / 60 ) + "m " + (distance_current %  60) + "s " +" ==>" + programa_tareas[current_idx];
+document.getElementById("current_task").innerHTML =  Math.floor(distance_current / 60 ) + "m " + (distance_current %  60) + "s " +"<br> ==>" + programa_tareas[current_idx];
     document.getElementById("total_task").innerHTML =  Math.floor(distance_total / 60 ) + "m " + (distance_total %  60) + "s ";
 
     if (distance_current == 1) {
