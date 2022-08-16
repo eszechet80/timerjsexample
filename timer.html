@@ -11,7 +11,9 @@ p {
 </style>
 </head>
 <body>
-
+<br>
+<br>
+<br>
 <p id="current_task"></p>
 <p id="total_task"></p>
 
@@ -43,8 +45,8 @@ document.getElementById("current_task").innerHTML =  Math.floor(distance_current
     }
     if (distance_total == 0) {
       clearInterval(x);
-      document.getElementById("current_task").innerHTML = "END";
-      document.getElementById("total_task").innerHTML = "END";
+      document.getElementById("current_task").innerHTML = "";
+      document.getElementById("total_task").innerHTML = "EBAAAA 🥳🎉";
     }  
  },1000);
 }
