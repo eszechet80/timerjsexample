@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
+</head>
+<body>
+
+<p id="current_task"></p>
+<p id="total_task"></p>
+
+<script>
+function start(){
+  const programa_tiempos  = [5,1,1,2,1,2,1,3,2,3,2,2,1,1,5];
+  const programa_tareas  = ["walk", "run", "walk", "run","walk", "run", "walk", "run","walk", "run", "walk", "run", "walk", "run", "walk" ];
+runProgram(programa_tiempos,programa_tareas);
+}
+function runProgram(programa_tiempos, programa_tareas){
+ const seconds_in_min = 60;
+ const total_time = seconds_in_min* programa_tiempos.reduce((partialSum, a) => partialSum + a, 0);
+ var current_idx= 0;
+ var finished_time = 0;
+ var remaining = total_time;
+ var remaining_task = seconds_in_min * programa_tiempos[current_idx];
+
+ var x = window.setInterval(function() {
+    var distance_total = remaining--;
+    var distance_current = remaining_task--;
+    console.log(distance_total + " - " + distance_current);
+
+document.getElementById("current_task").innerHTML =  Math.floor(distance_current / 60 ) + "m " + (distance_current %  60) + "s " +" ==>" + programa_tareas[current_idx];
+    document.getElementById("total_task").innerHTML =  Math.floor(distance_total / 60 ) + "m " + (distance_total %  60) + "s ";
+
+    if (distance_current == 1) {
+      current_idx++;
+      remaining_task = seconds_in_min * programa_tiempos[current_idx];
+    }
+    if (distance_total == 0) {
+      clearInterval(x);
+      document.getElementById("current_task").innerHTML = "END";
+      document.getElementById("total_task").innerHTML = "END";
+    }  
+ },1000);
+}
+start();
+</script>
+</body>
+</html>
+
